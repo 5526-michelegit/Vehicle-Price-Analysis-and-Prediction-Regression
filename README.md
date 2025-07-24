@@ -15,12 +15,13 @@ This R project develops a multiple linear regression model to predict used car s
 8. [Tools & Libraries](#tools--libraries)  
 9. [Key Findings](#key-findings)  
 10. [Conclusion](#conclusion)  
- 
 
 ## Repository Structure
+```text
 ├── analysis_and_prediction.R      # R script performing regression analysis and predictions  
 ├── analysis_and_prediction.Rmd    # R Markdown report with EDA, modeling steps, and results  
 └── README.md                      # Project documentation (this file)  
+```
 
 All files are located in the root of the repository. ([GitHub][1])
 
