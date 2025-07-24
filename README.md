@@ -1,47 +1,107 @@
-# Predicting Used Car Prices with Multiple Linear Regression
 
-This R project aims to develop a multiple linear regression model to predict the selling price of used cars based on various features. We utilize a comprehensive dataset that includes details such as car make, model, fuel type, transmission type, owner type, and more, aiming to identify the most significant predictors of a car's selling price.
+# Vehicle Price Analysis and Prediction with Multiple Linear Regression
 
-## Overview
+## Description
+This R project develops a multiple linear regression model to predict used car selling prices based on features such as make, model, fuel type, transmission, and owner type. :contentReference[oaicite:0]{index=0}
 
-### Dataset
-The dataset contains information about used cars listed for sale, including attributes like fuel type, transmission, owner type, mileage, engine size, and power. Some variables, like mileage and torque, were removed from the analysis due to comparability issues or inconsistent measurement units.
+## Table of Contents
+1. [Repository Structure](#repository-structure)  
+2. [Requirements](#requirements)  
+3. [Installation](#installation)  
+4. [Usage](#usage)  
+5. [Dataset](#dataset)  
+6. [Objectives](#objectives)  
+7. [Methodology](#methodology)  
+8. [Tools & Libraries](#tools--libraries)  
+9. [Key Findings](#key-findings)  
+10. [Conclusion](#conclusion)  
+ 
 
-### Objectives
-- To preprocess and clean the dataset, ensuring accurate types for each variable and removing unnecessary columns.
-- To convert unit measurements and deal with missing values appropriately.
-- To explore the dataset, identifying significant predictors and examining the distribution of variables.
-- To develop a multiple linear regression model that accurately predicts the selling price of a used car.
-- To validate the model's performance using statistical metrics and test it on unseen data.
+## Repository Structure
+├── analysis_and_prediction.R      # R script performing regression analysis and predictions  
+├── analysis_and_prediction.Rmd    # R Markdown report with EDA, modeling steps, and results  
+└── README.md                      # Project documentation (this file)  
+
+All files are located in the root of the repository. ([GitHub][1])
+
+## Requirements
+
+* **R** (version 4.0 or higher)
+* **RStudio** (optional, for interactive development)
+* The following R packages:
+
+  * `tidyverse` (`dplyr`, `ggplot2`, `readr`, etc.)
+  * `caret` for model training and evaluation
+  * `mice` for handling missing data
+  * `glmnet` and `xgboost` for advanced regression techniques
+  * Other CRAN packages as needed for statistical analysis and data preprocessing ([GitHub][1])
+
+## Installation
+
+1. **Clone** the repository:
+
+   ```bash
+   git clone https://github.com/5526-michelegit/Vehicle-Price-Analysis-and-Prediction-Regression.git
+   cd Vehicle-Price-Analysis-and-Prediction-Regression
+   ```
+2. **Install** required R packages. In an R console or RStudio:
+
+   ```r
+   install.packages(c(
+     "tidyverse", "caret", "mice", "glmnet", "xgboost", 
+     "readr", "ggplot2", "dplyr"
+   ))
+   ```
+
+## Usage
+
+1. **Run the analysis script** in R to preprocess data, build the regression model, and generate predictions:
+
+   ```r
+   source("analysis_and_prediction.R")
+   ```
+2. **Render the detailed report** (includes code, EDA, model diagnostics, and visualizations):
+
+   ```r
+   rmarkdown::render("analysis_and_prediction.Rmd")
+   ```
+3. **Review outputs** in the generated HTML (or PDF) report for full methodology and results. ([GitHub][1])
+
+## Dataset
+
+The project uses a comprehensive used cars dataset containing attributes such as fuel type, transmission, owner type, mileage, engine size, and power. Variables with inconsistent units (e.g., torque) were excluded to ensure comparability. ([GitHub][1])
+
+## Objectives
+
+* Preprocess and clean the dataset: ensure correct data types, handle missing values, and remove irrelevant columns.
+* Conduct exploratory data analysis (EDA) to understand variable distributions, outliers, and relationships.
+* Engineer features (dummy variables, transformations) and select predictors to optimize model performance.
+* Build and refine a multiple linear regression model using backward elimination (AIC) and multicollinearity checks.
+* Evaluate model accuracy with metrics such as R², Adjusted R², and RMSE on training and test sets. ([GitHub][1])
 
 ## Methodology
 
-1. **Data Preprocessing**: We adjusted data types, handled missing values, removed irrelevant columns, and converted units of measurement to ensure consistency and accuracy in our analysis.
-   
-2. **Exploratory Data Analysis (EDA)**: We conducted a detailed EDA to understand the distribution of the target variable (selling price) and the predictors. This included examining outliers, analyzing the distribution of numerical and categorical variables, and checking for multicollinearity.
+1. **Data Preprocessing**: Adjust data types, impute missing values with `mice`, and normalize measurements.
+2. **Exploratory Data Analysis (EDA)**: Visualize distributions, detect outliers, and assess correlations among predictors.
+3. **Feature Engineering**: Convert categorical variables to dummy indicators; apply transformations to meet regression assumptions.
+4. **Model Building**: Fit a full multiple linear regression model, then perform backward selection based on AIC and VIF diagnostics.
+5. **Model Evaluation**: Compute R², Adjusted R², and RMSE on hold-out data; validate residual plots and assumptions. ([GitHub][1])
 
-3. **Feature Engineering**: We transformed some variables to better fit the linear regression assumptions, created dummy variables for categorical predictors, and performed feature selection to reduce model complexity without sacrificing predictive power.
+## Tools & Libraries
 
-4. **Model Building**: We developed multiple linear regression models, starting with a full model including all predictors and then refined it using backward elimination based on the AIC criterion and checking for multicollinearity.
-
-5. **Model Evaluation**: We evaluated the model's performance using R-squared, Adjusted R-squared, and RMSE metrics on both training and test sets. We also performed diagnostic checks to validate the assumptions of linear regression.
-
-6. **Predictive Analysis**: Finally, we applied our optimized model to a test set to evaluate its predictive accuracy and examined the residuals to ensure that no significant violations of our model assumptions were present.
-
-## Tools and Libraries Used
-- R programming language
-- Tidyverse packages (`dplyr`, `ggplot2`, `readr`, etc.) for data manipulation and visualization
-- `caret` for model building and evaluation
-- `mice` for handling missing data
-- `glmnet` and `xgboost` for advanced regression techniques
-- Various other CRAN packages for statistical analysis and data preprocessing
+* **R** programming language
+* **Tidyverse** for data manipulation and visualization
+* **caret** for model training and cross-validation
+* **mice** for multiple imputation of missing data
+* **glmnet** and **xgboost** for regularized and boosted regression models
+* **rmarkdown** for report generation ([GitHub][1])
 
 ## Key Findings
-- The selling price of used cars is significantly influenced by the car's age, power, and certain brands.
-- The model demonstrates a good fit with an Adjusted R-squared value of 0.8577, indicating that it can explain a significant portion of the variance in the selling prices.
-- Diagnostic checks confirmed that the final model met the key assumptions of linear regression, ensuring the reliability of the predictions.
+
+* Car age, engine power, and brand significantly influence selling price.
+* The final model achieved an Adjusted R² of approximately 0.8577, explaining a large portion of price variability.
+* Diagnostic checks confirmed that model assumptions (linearity, homoscedasticity, normality) were met. ([GitHub][1])
 
 ## Conclusion
-Through careful data preparation, rigorous EDA, and methodical model building and evaluation, we developed a robust linear regression model that can predict the selling prices of used cars with a high degree of accuracy. This model can be a valuable tool for sellers to price their cars competitively and for buyers to ensure they are getting fair value for their purchases.
 
-For more details on our methodology, findings, and code, please refer to the full project documentation included in this repository.
+By following a rigorous workflow—data cleaning, EDA, feature engineering, model selection, and validation—this project delivers a robust multiple linear regression model for used car price prediction. The approach can guide sellers in pricing decisions and help buyers assess market value. ([GitHub][1])
